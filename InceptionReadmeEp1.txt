@@ -34,3 +34,7 @@ A) JSX makes our life easier while creating complex Nested html elements
 
 => we can inject React into an existing app sections like header, sidebar, footer 
 
+npm i (small version of npm install)
+OR 
+npm install 
+
