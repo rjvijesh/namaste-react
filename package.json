@@ -2,6 +2,11 @@
   "name": "namastereact",
   "version": "1.0.0",
   "description": "This is Namaste React by Akshay Saini",
+  "scripts": {
+    "start": "parcel index.html",
+    "prod": "parcel build index.html",
+    "test": "jest"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/rjvijesh/namaste-react.git"

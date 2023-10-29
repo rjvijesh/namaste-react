@@ -1,0 +1,112 @@
+1. create script in package.json so as to run 
+=>npx parcel index.html
+
+=>tip for a newcomer in a company just check for package.json script tag to understand how to staft the project
+
+=>running the scripts from package.json
+npm run start OR npm start => parcel index.html
+
+npm run prod => parcel build index.html
+npm prod will not work 
+
+2. JSX (Javascript syntax extension)
+creating html elements with React command were not developer friendly as if had to create nested elements it was a little complicated
+hence JSX got into picture to write html elements developer friendly 
+
+JSX is not part if React 
+JSX is different and React is different 
+JSX is HTML like syntax but it is not HTML inside javascript.
+JSX is a syntax while ReactElkement is a object 
+
+=>creating html element using React.createElement
+const heading = React.createElement("h1", {"id": "heading"}, "Namaste React");
+
+=>creating html element using React.createElement
+const jsxHeading = <h1 id="heading">Namaste React using JSX</h1>;
+
+if you want to add attributes in JSX, we have to use camelCase 
+foreg. instead of class="head we have to write className="head"
+instead of tabindex="1" we have to write tabIndex="1"
+
+=>HOMEWORK
+img tag in JSX
+src,href
+
+=>multiple line of JSX must be wrapped inside round brackets
+
+
+tip=> whom are you writing code for
+human(any human must understand your code) and machine(binary code)
+
+
+const jsxHeading = <h1 id="heading">Namaste React using JSX</h1>;
+the above code is not a pure javascript code as the above code is not understood by the JS engine
+it will return error=> Uncaught SyntaxError: Unexpected token '<'
+then the above code is working only because of Parcel
+
+
+JSX code is transpiled before it reaches the JS engine.
+this transpiled by parcel
+and parcel is not doing this by itself but this transpilation is done by a package BABEL
+
+=>we can inject javascript inside of JSX 
+=> we can inject React Element inside JSX
+=> JSX automatically sanitizes any malicous data preventing Cross-site scripting attacks
+
+=>BABEL takes the JSX code and transpiles to a react code 
+
+JSX code is converted to React.createElement (hence the reason when you console jsxHeading it prints the JS object)
+
+=>BABEL
+1. it not converts JSX to React create element
+2. it transpiles the ES6 code to a code which older browser understands 
+3. Parcel is manager of BABEL
+
+####extensions used in VSCODE
+=>prettier
+bracket pair coloroization
+Eslint
+better comments
+
+Q)React Components
+=> everything in react is a component
+types of components
+Class Based Components (Old Way) 
+Functional Components (New)
+
+Q) Functional component 
+A component is a function which returns some JSX code is a Functional component 
+A component is a function which returns React Element is a Functional component 
+Function name must start with a capital letter
+
+
+const fn = () => {
+    return true;
+}
+
+same as 
+
+const f2 = ()=> true;
+
+
+const HeadingComponent = () => {
+    return <h1>Namaste React Functional Component</h1>;
+}
+
+OR 
+
+const HeadingComponent = () => <h1>Namaste React Functional Component<h1>;
+
+functional component cannot be rendered same as React Element 
+root.render(HeadingComponent);  // will not work 
+root.render(<HeadingComponent />);  // correct syntax to render functional component
+
+we can include another functional component inside a functional component
+This is known as Component composition (composing 2 components into one component )
+
+we can return a normal function inside a functional component just like arrow function
+
+
+
+
+

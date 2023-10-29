@@ -5,22 +5,32 @@ does not stand for Node Package Manager
 
 package.json is a configuration for NPM packages
 
-Our project requires many dependency and these dependecnies are managed by package.json files with various versions
+Our project requires many dependency and these dependencies are managed by package.json file with various versions
 
 #Most imp package in our project is Bundler(webpack, Parcel, wheat)
 Bundler - A bundler is a tool that puts together all your JavaScript code and its dependencies and throws a new JavaScript output file with everything merged, ready for the web, commonly known as the bundle file
 
-git init
+git init - initialises the git project 
 
 npm init - will initiliaze npm package in our project
 
 npm install -D (package name)
--D dev Dependencies - required for development phase 
+-D dev Dependencies - required only for development phase 
 Normal dependencies 
 
 difference between ^(charact) and ~(tilde) in package.json
-charact - it will auto update to minor patch versions 2.8.0 to 2.8.3
-tilde - it will auto update to major versions 2.8.0 to 3.0.0
+2.8.0
+2 - major version
+8 - minor version 
+0 patch version
+
+tilde - it will auto update to patch versions 2.8.0 to 2.8.X
+caret - it will auto update to minor/patch versions 2.8.0 to 2.X.X
+The Caret & tilde explanation is incorrect. Tilde doesn't upgrade the major version, it just upgrades the patch version. Caret upgrades the minor versions, none of these upgrades  major versions. npm follows semantic versioning, they are in the format of major.minor.patch
+2.3.8 means 2 is major, 3 is minor, 8 is patch
+~2.3.8 means it will install 2.3.x but never 2.4.x
+^2.3.8 means it will install 2.x.x but never 3.x.x
+Please rectify.
 
 package.json - configuration of npm and keeps a track of all the version of all dependencies installed in the project
 
@@ -31,7 +41,7 @@ node modules - it fetch all the code of all dependencies and acts as a database
 
 Transitive dependencies - we installed parcel which required its own dependencies and indirectly parcel dependencies required its own sub dependencies
 
-there are multiple package.json files in pur project 
+there are multiple package.json files in our project 
 1. package.json in our root project directory 
 2. every nodemodules packages has its own package.json files in it 
 

@@ -1,46 +1,54 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-//const heading = React.createElement("h1", {id:"heading", xyz:"abc"}, "Hello World from react");
-//console.log(heading);//It creates a JS object with h1 tag
-//const root = ReactDOM.createRoot(document.getElementById("root"));
-//console.log(root);
-//root.render(heading);//it will convert the above object into h1 tag(HTML Element) and will append to dom node root
 
+//React Elements
+const heading = React.createElement("h1", {"id": "heading"}, "Namaste React");
+console.log(heading);// will return html element as object
+//output
+////{$$typeof: Symbol(react.element), type: 'h1', key: null, ref: null, props: {…}, …}$$typeof: Symbol(react.element)key: nullprops: {id: 'heading', children: 'Namaste React'}ref: nulltype: "h1"_owner: null_store: {validated: false}_self: null_source: null[[Prototype]]: Object
 
-
-//how to created nested html elements
-
-/**
- *
- * <div id="parent">
- *     <div id="child">
- *          <h1>I'm h1 tag</h1>
- *          <h2>I'm h2 tag</h2>
- *     </div>
- *     <div id="child2">
- *          <h1>I'm h1 tag</h1>
- *          <h2>I'm h2 tag</h2>
- *     </div> 
- * </div>
- * 
- * ReactElement(Object) => HTML browser understand
- *  
- */
-const parent = React.createElement(
-    "div", 
-    {id:"parent"}, [
-        React.createElement("div", {id:"child"},[
-            React.createElement("h1", {}, "This is Namaste React"),
-            React.createElement("h2", {}, "I'm h2 tag")
-        ]),
-        React.createElement("div", {id:"child"},[
-            React.createElement("h1", {}, "I'm h1 tag"),
-            React.createElement("h2", {}, "I'm h2 tag")
-        ])
-    ]
+//JSX - HTML-like or XML-like syntax
+const jsxHeading = (
+    <h1 className="head" tabIndex="1">
+        Namaste React using JSX
+    </h1>
 );
-console.log(parent);
-const root = ReactDOM.createRoot(document.getElementById("header"));
-root.render(parent);  // render will replace all the child element if exists with the parent html element
+console.log(jsxHeading);// will return html element as object
+//output 
+//{$$typeof: Symbol(react.element), type: 'h1', key: null, ref: null, props: {…}, …}
 
-//JSX
+const element = <span>Span Element</span>
+
+const Title = () => (
+    <h1> Title component
+        {element}
+    </h1>
+)
+    
+
+const Footer = function() {
+    return <h1>Footer component</h1>
+}
+
+const number =10000;
+//const data = api.getAPIdata(); if this api contains any malicous data, then JSX can prevent this CSS attack
+const HeadingComponent = () => (
+    <div id="container">
+        <h2>{number}</h2>
+        <h2>{100 + 200}</h2>
+        {console.log("logging inside JSX")}
+        {Title()} 
+        <Title></Title>
+        <Title />
+        <h1 className="heading2"> Namaste React Functional Component </h1>
+        <Footer />
+    </div>
+);
+
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+//root.render(jsxHeading);
+root.render(<HeadingComponent />);
+
+
+

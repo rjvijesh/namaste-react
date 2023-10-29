@@ -1,6 +1,6 @@
 Q)how browser understands "document" functionality
 A)As Javascript has the JS engine which has superpowers like DOM APIS which contains all these feaatures
-browser does not understand React, so we have include react in our project
+browser does not understand React, so we have to include react in our project
 
 =>React is a JS library
 
