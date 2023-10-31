@@ -1,0 +1,51 @@
+##Talk is Cheap, show me the code#####
+food ordering app
+
+
+/**
+*Header
+*    Logo
+*    Nav links
+*Body
+*    Search 
+*    RestaurantContainer
+*        - RestaurantCard
+*Footer
+*    Copyright
+*    Links
+*    Address
+*    Contact
+*
+*/
+
+1. props
+- dynamically pass some data to a component 
+- just normal arguments to a function
+
+2. Destructuring on the fly 
+props = {resName, cuisine}
+
+
+3. Config driven UI (system design interview)
+control the ui based on the data
+UI is basically driven by config
+
+
+4. array to comma seperated string
+const a = ["burger", "snacks"];
+console.log(a.join(", "));
+
+
+5. optional chaining 
+var {} = resData.data ? "" : "";
+var {} = resData?.data;
+
+6. ADD Key ttribute in a component
+=> we must always add a key attribute to every component to uniquely identify the component while rendering
+if we don't add key attirbute then React will not able to identify the component and try to re-render the components again, hence adding key attribute will optimize the app.
+
+=>Never add index as a key, as if the items are re-ordered in a array, then the pattern to identify the component is disturbed
+
+
+
+
