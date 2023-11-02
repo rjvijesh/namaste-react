@@ -1,0 +1,74 @@
+//React super powers
+1. every thing we can do with React we can also do with HTML,CSS and javascript
+React makes your developer experience easy, less code, coding experience very fast
+makes large application production ready 
+
+
+=> React Hooks 
+
+
+seperate files for seperate components 
+break our app into multiple files
+don't overthink while starting the app, as we can restructure it anytime later
+https://legacy.reactjs.org/docs/faq-structure.html
+
+folder structure pattern 
+ - src
+
+
+ 1st Export and then Import 
+
+ while importing if you don't put extension it will still work
+
+
+ default export/import 
+ when 
+ 1. default export  export default abcd;
+ 2. default import  - import name from path;
+ 
+
+ 2 Named export/import 
+ 1. named export  - export abcd;
+ 2. named import  - import {name} from path;
+
+ HOME WORK=>can I do default export alongwith a named export 
+ YES we can do, I have added default export with named export in RestaurantCard component
+
+feature to huilt top rated restaurant 
+ > 4 starts => top rated restaurant
+
+SUPER POWER OF REACT 
+=>DOM manipulation
+1. updating the DOM manipulation efficiently
+2. UI and data layer work in sync 
+
+REACT Hook 
+=>A normal JS function given to us by react.
+
+2 important hooks  
+1. useState() - generate superpowerful state variables in react 
+= Maintains the state variable for the component 
+= Whenever a state variable updates, react will re-render the component.
+= logic of updating is called re-rendering. 
+
+useEffect()
+
+
+React uses Re-consiliation algorithm 
+=Re-consiliation algorithm  also known as react fiber(React16 introduced)
+=when something changes in UI is known as Re-consiliation
+
+Actual DOM <div></div> 
+Virtual DOM - representation of actual DOM (normal JS object)
+
+Diffie Algorithm 
+find the difference between 2 virtual DOM 
+Old virtual DOM and New Virtual DOM
+
+React never touches./updates the Actual HTML and whenever a state variables changes it compares the old virtual DOM(JS object) and new virtual DOM(JS object) and renders the new virtual DOM into the actual DOM replacing the UI
+
+React is doing efficient DOM manipulation
+As it has virtual DOM 
+Virtual DOM concept existed long back but this concept became popular after react 
+Diffie alogorithm
+

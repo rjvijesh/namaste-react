@@ -21,3 +21,21 @@ Tree shaking(remove unused code for you)
 
 for local build - npx parcel index.html (put all files in dist folder)
 for prod build - npx parcel build index.html
+
+/\*\*
+\*Header
+
+- Logo
+- Nav links
+  \*Body
+- Search
+- RestaurantContainer
+-        - RestaurantCard
+                  - Img
+                  - Name of res, start rating, cuisine, delivery time
+  \*Footer
+- Copyright
+- Links
+- Address
+- Contact
+- \*/
