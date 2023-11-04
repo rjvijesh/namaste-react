@@ -1,0 +1,65 @@
+1. Monotlithic & Microservice architecture
+
+Monotlithic architecture 
+API, UI, SMS service, DB, AUth service everything was written in a single appplication
+
+
+
+Microservices 
+=different service for different app
+=This is known as seperation of concerns and follows the sigle responsibility principle
+=all teams works on their own task and repo
+=different type of connections between each services
+= all services run on their own specific port and can be mapped to own domain name
+=if one service has to connect to any other app, then they will have to call the respective app domain name/port number 
+
+
+to call API 
+
+Approach 1. 
+Loads  ==> API ===> RenderUI
+          500ms   
+
+Approach 2. 
+Loads  ==> RenderUI ===> API ==> Re-renderUI
+        UI-Skeleton             500ms
+
+approach 2 is a recommended approach
+as we are rendering a skeleton for better UI experience
+
+React render cycles are very fast 
+no issue in re-rendering multiple times 
+
+Hook 2 - useEffect
+2 arguments 
+1st as a callback function 
+2nd as a dependency array
+
+=>callback function is called after the component is rendered
+=>as soon as the render cycle is finished, it will call the callback function
+
+
+=>cors issue 
+our browser is blocking to call swiggy api from one origin to other origin 
+
+=> shimmer UI
+fake the ui while loading the actual api data
+
+=>conditional rendering
+rendering based on any condition
+
+
+=> why use state variables
+1. if you want to update the ui then normal js variable will not be updated
+
+2. state variable even though declared as const gets modified to another variable because the entire component is re-rendered which means a new const variable is created so actually behind the scenes the same const variable is not updated while a new const variable created with a new value
+
+
+3. the value of input text is tied/bind to state variable 
+the value of searchText is bind to state variable "SearchText" and by default the value of state variable is "" and hence we are not able to type any value inside the input type 
+
+4. whenever the state variables updates, react triggers a re-consiliation cycle(re-remders the component)
+
+
+
+

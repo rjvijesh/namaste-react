@@ -8,14 +8,7 @@ const styleCard = {
     backgroundColor:"#f0f0f0",
 }
 
-
-  
-
-
-
-
 const AppLayout = () => {
-  console.log(<Body />);
     return (
         <div className="app">
             <Header />
