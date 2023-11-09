@@ -1,0 +1,140 @@
+=>class based components
+1.Its a normal javascript class 
+2. syntax is 
+class classname extends React.Component {
+    renders(){
+        returns()
+    }
+}
+a class components returns a render method which returns a JSX code
+3. React.Component is a class given by React package
+
+4. to recieve a props value in class component we have to write a constructor method and a super(props) to get the props value
+
+5. why super(props) to be written inside constructor
+=>ANS -  to retrieve all the powers of the base/parent class javascript provides a method called super and writing super in the constructor (and it is necessary otherwise js will throw an error) of the child class will result in invoking the constructor of the parent class and thus providing all the functionality of the base/parent class.
+=>Also using Super method we can access the props any where inside the component using this.props
+
+=>Loading a class based component in a web page means creating a instance of that class
+which means the constructor is called 
+and this is the best place to recieve the props and create a state variable.
+
+=> if we want to create 2 state variables in functional component 
+then we have to declare 2 times 
+const [count] = useState(0)
+const [count2] = useState(1)
+but behind the scenes React makes one single object and keeos all the state variables in one object
+
+
+=>never update state variables directly in class components
+incorrect way = this.state.count = this.state.count +1;
+we have to use this.setState() method to update state variables
+
+NOTE: class About extends React.Component{}
+can also be written as
+import {Component} from "react";
+class About extends Component{}
+
+6. Life cycle methods in Class Based components
+how the class based components is mounted/loading in the web page
+
+when a class components is loaded
+Order 1 => constructor is called
+Order 2 => render is called
+Order 3 => componentDidMount is called
+
+
+when a parent and child both are class based components 
+then order of life cycle events will be (considering both the class components are having all the 3 life cycle methods)
+Order 1 => parent class constructor is called
+Order 2 => parent class render is called
+Order 3 => child class constructor is called
+Order 4 => child class render is called
+Order 5 => child class componentDidMount is called
+Order 6 => parent class componentDidMount is called
+
+why because the order for the lifecycle events starts from constructor, render and at the end it will call the componentDidMount but in this case when the parent class is called it will call constructor 1st and then the render 2nd and then it finds another child class in the render method hence it will try to execute the life cycle events of the child class (which is constructor, render, componentDidMount) and at the end it will call its own componentDidMount cycle
+
+=>Use of componentDidMount
+to make API calls 
+why we make API calls in componentDidMount method 
+we don't wait the API to return the data but it renders the component first with basic details and then make the API call, get the data and then the Api data is filled in the component 
+
+
+scenario 2: 
+when a parent and 2 child both are class based components 
+then order of life cycle events will be (considering both the class components are having all the 3 life cycle methods)
+
+->parent constructor
+->parent render
+
+    ->child1 constructor
+    ->child1 render
+
+    ->child2 constructor
+    ->child2 render
+
+    ->child1 componentDidMount
+    ->child2 componentDidMount
+
+->parent componentDidMount
+
+
+Mounting a component
+2 phase 
+phase 1 - Render phase(constructor, render)
+phase 2 - Commit phase (componentDidMount)
+
+=>optimization if parent class component has multiple child class components
+react will batch the render phase for both the child phase and hence try to call (constructor,render methods of both the child class) and then it will call the componentDidMount of both the child class component and then the componentDidMount of the parent class component
+
+React Lifecycle diagram - https://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
+
+
+* ------- Mounting -------- *
+Constructor (Dummy data)
+Render (Dummy data)     
+    <HTML Dummy>
+componentDidMount
+    <API Call>
+    <this.setState> -> State variable is updated
+
+* ------- Update Cycle -------- *
+
+Render(API data)
+    <HTML (new API data)>
+componentDidUpdate
+
+=>componentWillUnmount
+= is called just before the component is disappear/removed from the web page
+= componentWillUnmount is called when we moves to any other page
+=> cleanup activity
+we need to clear the variables/interval when we change the page to another page
+
+what is componentWillUnmount cycle in functional component 
+useEffect(()=>{
+
+    return()=>{
+
+    }
+})
+
+we can clear the variables/clear intervals inside return method inside useEffect method
+
+Issue of Single page application
+=>performance loss 
+1. when you move to another page, it is not reloading your page, the variables are re-initialized every time 
+
+
+=> async inside useEffect method
+// ❌ Don't do this!
+useEffect(async () => {
+  const users = await fetchUsers();
+  setUsers(users);
+
+  return () => {
+    // this never gets called, hello memory leaks...
+  };
+}, []);
+
+This WORKS, but you should avoid it. Why? Because React’s useEffect hook expects a cleanup function returned from it which is called when the component unmounts. Using an async function here will cause a bug as the cleanup function will never get called. Yikes! So what do we do?

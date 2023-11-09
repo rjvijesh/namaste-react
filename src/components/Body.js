@@ -14,12 +14,14 @@ const Body = ()=> {
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
 
+    //console.log("usestate",useState());
+
     //can also be written as 
     //const arr = useState(resList);
     //const listOfRestaurants = arr[0];
     //const setListOfRestaurants = arr[0];
 
-    useEffect(()=>{
+    useEffect( ()=>{
         fetchData();
     }, []);
 

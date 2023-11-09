@@ -50,7 +50,8 @@ Link is a wrapper over anchor tag and acts as a anchor tag in HTML
 => Client side routing - does not make a network call and fetch the result from client and routes to amother component wiothout refreshing the page.
 => Server side routing - make a network call and fetch the result from server and refreshes the page 
 
-10. Dyanamic Routing 
+10. Dyanamic Routing
 
+11. console.log("usestate",useState());
 
-
+//returns [undefined, ƒ]
