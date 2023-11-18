@@ -16,7 +16,7 @@ for mobile we use react-native
 
 1. React libraries work with some fundamentals
 2. It was built to manipulate the DOM using JS and React gives the super power to manipulate DOM
-3. most costly operation is DOM nodes to be manupulated
+3. most costly operation is DOM nodes to be manipulated
 
 Q)what is React.createElement
 A) It creates a JS object with h1 tag

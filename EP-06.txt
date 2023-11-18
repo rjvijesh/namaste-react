@@ -7,7 +7,7 @@ API, UI, SMS service, DB, AUth service everything was written in a single apppli
 
 Microservices 
 =different service for different app
-=This is known as seperation of concerns and follows the sigle responsibility principle
+=This is known as seperation of concerns and follows the single responsibility principle
 =all teams works on their own task and repo
 =different type of connections between each services
 = all services run on their own specific port and can be mapped to own domain name
@@ -58,7 +58,7 @@ rendering based on any condition
 3. the value of input text is tied/bind to state variable 
 the value of searchText is bind to state variable "SearchText" and by default the value of state variable is "" and hence we are not able to type any value inside the input type 
 
-4. whenever the state variables updates, react triggers a re-consiliation cycle(re-remders the component)
+4. whenever the state variables updates, react triggers a re-consiliation cycle(re-renders the component)
 
 
 

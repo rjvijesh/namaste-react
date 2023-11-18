@@ -1,0 +1,51 @@
+=>single responsibility rule
+every component must have a single responsibility rule
+
+=> modularity
+breaking your code into different modules
+testing your code makes easy as we need to test small components only
+re-usable can be used anywhere required
+re-usable, maintainable, testable
+
+=>custom hooks
+=>create custom hook file with use keyword
+hooks are utility functions 
+creating custom hooks not mandatory
+=>readable 
+=>modular
+=>re-usable 
+
+seperate file for seperate hook
+
+moved fetching of retaurant menu data from retaurantMenu to useRestaurantMenu hook
+
+create custom hooks and add to npm repo 
+ideas -
+which access local storage and session storage
+
+=>custom hook to check user internet if offline or online 
+
+=>try to build a feature when your internet goes off instead of showing any error page
+
+=>dynamic bundling
+parcel bundles all the JS files into a single file, but if there are 1000 of js files, so bundling into a single file will make it a huge size which is not a optimze way to deploy the app 
+hence we have to make smaller bundles of the files and this process is known as below 
+1. chunking
+2. code splitting
+3. Dynamic bundling
+4. Lazy Loading
+5. on Demand Loading 
+6. Dynamic import 
+
+
+
+we have to use lazy loading if our app grows big!
+we have to load the component when it is exactly accessed
+
+use a lazy method to get the lazy loading 
+const Grocery = lazy(()=>import('./components/Grocery'));
+
+<Suspense fallback={<h1>About us Loading...</h1>}>
+    <About />
+</Suspense>
+use suspense to show a fallback before your actual grocery component is loaded 

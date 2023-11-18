@@ -23,7 +23,7 @@ and this is the best place to recieve the props and create a state variable.
 then we have to declare 2 times 
 const [count] = useState(0)
 const [count2] = useState(1)
-but behind the scenes React makes one single object and keeos all the state variables in one object
+but behind the scenes React makes one single object and keeps all the state variables in one object
 
 
 =>never update state variables directly in class components

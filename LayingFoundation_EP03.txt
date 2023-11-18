@@ -1,7 +1,7 @@
 1. create script in package.json so as to run 
 =>npx parcel index.html
 
-=>tip for a newcomer in a company just check for package.json script tag to understand how to staft the project
+=>tip for a newcomer in a company just check for package.json script tag to understand how to start the project
 
 =>running the scripts from package.json
 npm run start OR npm start => parcel index.html
@@ -13,15 +13,15 @@ npm prod will not work
 creating html elements with React command were not developer friendly as if had to create nested elements it was a little complicated
 hence JSX got into picture to write html elements developer friendly 
 
-JSX is not part if React 
+JSX is not part of React 
 JSX is different and React is different 
 JSX is HTML like syntax but it is not HTML inside javascript.
-JSX is a syntax while ReactElkement is a object 
+JSX is a syntax while ReactElement is a object 
 
 =>creating html element using React.createElement
 const heading = React.createElement("h1", {"id": "heading"}, "Namaste React");
 
-=>creating html element using React.createElement
+=>creating html element using JSX
 const jsxHeading = <h1 id="heading">Namaste React using JSX</h1>;
 
 if you want to add attributes in JSX, we have to use camelCase 
