@@ -4,6 +4,7 @@ import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
+import { RESTAURANT_LIST_API_URL } from "../utils/constants.js";
 
 const Body = ()=> {
 
@@ -27,7 +28,7 @@ const Body = ()=> {
     }, []);
 
     const fetchData = async () => {
-        const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING");
+        const data = await fetch(RESTAURANT_LIST_API_URL);
         
         const json = await data.json();
         let listOfValidRes = json.data.cards.filter((value, index)=>{
@@ -50,14 +51,14 @@ const Body = ()=> {
     <Shimmer /> 
     : (
         <div className="body">
-            <div className="filter">
-                <div className="Search">
-                    <input type="text" className="search-box" value={searchText}
+            <div className="filter flex">
+                <div className="Search m-4 p-4">
+                    <input type="text" className="search-box border border-solid border-black" value={searchText}
                     onChange={(e)=>{
                         setSearchText(e.target.value);
                     }}
                     ></input>
-                    <button className="btn-search" 
+                    <button className="btn-search px-4 py-2 bg-green-100 m-4 rounded-lg" 
                     onClick={()=>{
                         console.log(searchText);
                         const searchFilteredList = listOfRestaurants.filter((res)=>{
@@ -67,16 +68,19 @@ const Body = ()=> {
                     }}
                     >Search</button>
                 </div>
-                <button className="filter-btn" 
-                onClick={()=>{
-                    const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4
-                    );
-                    setListOfRestaurants(filteredList);
-                }}
-                >Top Rated Restaurants
-                </button>
+                <div className="Search m-4 p-4 flex items-center">
+                    <button className="filter-btn px-4 py-2 bg-gray-100  rounded-lg" 
+                    onClick={()=>{
+                        const filteredList = listOfRestaurants.filter((res) => res.info.avgRating > 4
+                        );
+                        setListOfRestaurants(filteredList);
+                    }}
+                    >Top Rated Restaurants
+                    </button>
+                </div>
+                
             </div>
-            <div className="res-container">
+            <div className="res-container flex flex-wrap">
                 {
                     filteredRestaurants.map(restaurant => 
                     <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>

@@ -1,0 +1,44 @@
+CSS types 
+1. sass 
+2. scss 
+
+above 2 types are not recommended for big applications
+
+popular way to write css in react is styled components 
+
+3.material ui (react component library)
+
+4.boostrap
+
+5.chakra ui
+
+6.ant design world 2nd popular react css library
+
+
+7.Tailwind css 
+Rapidly build modern websites without ever leaving your HTML.
+
+8.postcss
+a tool for transforming CSS with Javascript
+Tailwind css uses postcss behind the scenes
+
+Parcel need to use postcssrc to read tailwind css
+
+=>tailwind css offers you classname automatically for every css that you want to write in your app 
+
+to write custom css feature when no inbuilt class present for tailwind css library 
+w-[200px]
+
+advantages
+1. offers lots of classes 
+2. light weight, tailwind will add/import only those css classes that we have used in the webpage 
+3. tailwind will import m-4 class even if we use m-4 a lot of times in the web page (no duplicate class added )(never ship unused css classes)
+4. avoid redundant css classes as different team developers write or use same classes 
+5. dark mode easily implemented 
+
+disadvantages 
+initial learning curve 
+code look ugly as js code becomes less readable 
+css classes is added in the html page, js files 
+
+

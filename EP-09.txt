@@ -48,4 +48,4 @@ const Grocery = lazy(()=>import('./components/Grocery'));
 <Suspense fallback={<h1>About us Loading...</h1>}>
     <About />
 </Suspense>
-use suspense to show a fallback before your actual grocery component is loaded 
+use suspense to show a fallback before your actual grocery component is loaded becuase react throws error as it does not get the grocery component when you try to access grocery page
