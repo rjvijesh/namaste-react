@@ -1,18 +1,24 @@
 import {LOGO_URL} from "../utils/constants";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
+import UserContext from "../utils/UserContext.js";
 
 const Header = () => {
     //let btnName = "Login";
     const onlineStatus = useOnlineStatus();
     const [btnNameReact, setBtnNameReact] = useState("Login");
+
+    const {loggedInUser} = useContext(UserContext);
+    //console.log("loggedInUser", loggedInUser);
     //console.log("Header called");
 
     //no dependency array useEffect is called on every rendering of component
     useEffect(()=>{
         //console.log("useEffect called");
     }, [btnNameReact])
+
+
 
     return (
         <div className="header flex justify-between  bg-pink-100 shadow-lg sm:bg-yellow-50 lg:bg--green-50">
@@ -37,12 +43,13 @@ const Header = () => {
                         <Link to="/grocery">Grocery
                         </Link>
                     </li>
-                    <li className="px-4">Cart</li>
+                    
                     <button className="login-btn" onClick={()=>{
                         //btnName="Logout"
                         btnNameReact === "Login" ? setBtnNameReact("Logout") : setBtnNameReact("Login")
                         //console.log(btnNameReact);
                     }}>{btnNameReact}</button>
+                    <li className="px-4 font-bold">{loggedInUser}</li>
                 </ul>
             </div>
         </div>

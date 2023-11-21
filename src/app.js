@@ -1,4 +1,4 @@
-import React, {lazy, Suspense } from "react";
+import React, {lazy, Suspense, useState, useEffect } from "react";
 import ReactDOM from "react-dom/client";
 
 import Header from "./components/Header";
@@ -9,6 +9,7 @@ import Error from './components/Error';
 //import Grocery from './components/Grocery';
 import RestaurantMenu from "./components/RestaurantMenu";
 import {createBrowserRouter, RouterProvider, Outlet} from "react-router-dom";
+import UserContext from "./utils/UserContext";
 
 const styleCard = {
     backgroundColor:"#f0f0f0",
@@ -19,11 +20,23 @@ const Grocery = lazy(()=>import('./components/Grocery'));
 const About = lazy(()=>import("./components/About"));
 
 const AppLayout = () => {
+    const [userName, setUserName] = useState();
+    //authentication 
+    useEffect(()=>{
+        //make an API call and send username, password
+        const data = {
+            name:"Vijesh Rajagopalan"
+        }
+        setUserName(data.name);
+    },[])
+    
     return (
-        <div className="app">
-            <Header />
-            <Outlet />
-        </div>
+        <UserContext.Provider value={{loggedInUser:userName, setUserName }}>
+            <div className="app">
+                <Header />
+                <Outlet />
+            </div>
+        </UserContext.Provider>
     )
 }
 

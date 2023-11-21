@@ -1,10 +1,11 @@
-import RestaurantCard from "./RestaurantCard";
-import { useState, useEffect } from "react";
+import RestaurantCard, {withPromotedLabel}  from "./RestaurantCard";
+import { useState, useEffect, useContext } from "react";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import {Link} from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus.js";
 import { RESTAURANT_LIST_API_URL } from "../utils/constants.js";
+import UserContext from "../utils/UserContext";
 
 const Body = ()=> {
 
@@ -15,6 +16,8 @@ const Body = ()=> {
     const [listOfRestaurants, setListOfRestaurants] = arr;
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
     const [searchText, setSearchText] = useState("");
+
+    const RestaurantCardPromoted = withPromotedLabel(RestaurantCard);
 
     //console.log("usestate",useState());
 
@@ -36,6 +39,14 @@ const Body = ()=> {
         });
         //optional chaining
         let resListAPIData = listOfValidRes[0]?.card?.card?.gridElements?.infoWithStyle?.restaurants;
+        resListAPIData = resListAPIData.map((item)=>{
+            if(item.info.avgRating > 4.0){
+                return {...item, promoted : true}
+            }else{
+                return {...item, promoted : false}
+            }
+        })
+        //console.log(resListAPIData);
         setListOfRestaurants(resListAPIData);
         setFilteredRestaurants(resListAPIData);
     };
@@ -44,6 +55,8 @@ const Body = ()=> {
     if(onlineStaus === false){
         return <h1>Looks like you are offline!! Please check your internet connection</h1>
     }
+
+    const {setUserName, loggedInUser} = useContext(UserContext);
 
     //console.log("body rendered");
     //conditional rendering 
@@ -78,14 +91,22 @@ const Body = ()=> {
                     >Top Rated Restaurants
                     </button>
                 </div>
+                <div className="Search m-4 p-4 flex items-center">
+                    <label className="">UserName: </label>
+                    <input 
+                        className="border border-black p-2"
+                        value={loggedInUser} 
+                        onChange={(e)=>{setUserName(e.target.value);}} 
+                    />
+                </div>
                 
             </div>
             <div className="res-container flex flex-wrap">
                 {
                     filteredRestaurants.map(restaurant => 
                     <Link key={restaurant.info.id} to={"/restaurants/" + restaurant.info.id}>
-                        <RestaurantCard  resData={restaurant.info} 
-                        />
+                        {restaurant.promoted ? (<RestaurantCardPromoted resData={restaurant.info} />) : (<RestaurantCard  resData={restaurant.info} />)}
+                        
                     </Link>)
                 }
             </div>

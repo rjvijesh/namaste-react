@@ -1,0 +1,87 @@
+1. higher order components 
+=>a function which takes a component and returns a component
+=>a normal JS function
+=>a function which takes a component as an input and enhances the input and returns a component
+=> it does not modify the input component features but just enhance it by adding css on top it 
+
+Higher order components are pure functions 
+
+2. controlled and uncontrolled components
+=>manage its data
+2 layers 
+1) UI layer 
+2) data layer 
+
+UI is powered by data layer 
+data layer - state props for
+UI - JSX code 
+
+3. install react dev tools 
+components - gives all the component used in the form of a virtual dom and in the right hand  side it will provide the data layer information
+profiler - records all the actions done in the react web page
+
+
+4. state to be lifted up to parent
+passing a function to child components and getting the child component click event to call this passed function and setting the index 
+
+controlled components - 
+=>when a component have a control over any other or child component then the other/child is a controlled component 
+=>parent component controlling the child components
+
+Uncontrolled Component 
+=>when a component have its own state then it is a uncontrolled component 
+
+HOme Work 
+1. close all accordian?
+
+5.props drilling 
+=>passing props from one parent to sub-parent and from sub-parent to child component is known as props drilling
+
+=>challenges
+even though the sub-parent is not using the prop value the props value is passed to child component via sub-parent component 
+when app is huge, passing props from one component to another becomes a challenge 
+In react, data passed in one way top to down 
+
+to overcome this challenge
+6. React Context
+Global place to keep the data and any component can access it 
+
+=>one data to be accessed from every component 
+example 
+1. logged in user name details 
+2. user theme 
+
+=>data which we have to use in multiple places, is to be stored in Context
+import {createContext, useContext} from "react"
+import UserContext from "UserContext" (UserContext is a file which you stored your data)
+const data = useContext()
+
+=>we cannot use useContext in class based components as class components does not supports hooks 
+so we have to access UserContext by using a component 
+<UserContext.Consumer>
+{({loggedInUser})=>{console.log(loggedInUser)}}   /// callback function inside JSX
+</ UserContext.Consumer>
+
+=> Update a context value, we have to use UserContext.Provider and wrap it above the APP layout 
+
+<UserContext.Provider value={{loggedInUser : newValue}}>
+
+<UserContext.Provider>
+
+=> we can create multiple context 
+=> we can use context values to whole app or to a part of an app
+
+Homework 
+1. can we overide the UserContext value ?
+Ans) - yes we can override the context value 
+<UserContext.Provider value={{loggedInUser:userName }}>
+            <div className="app">
+                <UserContext.Provider value={{loggedInUser:"Elon Musk" }}>
+                    <Header />
+                </UserContext.Provider>            
+                <Outlet />
+            </div>
+        </UserContext.Provider>
+
+
+we can use Context in both medium and large size application
