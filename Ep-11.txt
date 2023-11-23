@@ -56,7 +56,7 @@ import {createContext, useContext} from "react"
 import UserContext from "UserContext" (UserContext is a file which you stored your data)
 const data = useContext()
 
-=>we cannot use useContext in class based components as class components does not supports hooks 
+=>we cannot use hook useContext in class based components as class components does not supports hooks 
 so we have to access UserContext by using a component 
 <UserContext.Consumer>
 {({loggedInUser})=>{console.log(loggedInUser)}}   /// callback function inside JSX

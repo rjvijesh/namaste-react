@@ -1,0 +1,95 @@
+1. Redux 
+=>A Predictable State Container for JS Apps
+=>Centralize, debugging, flexible
+=>not mandatory
+=> if your app has lot of operations and components interaction then use redux(for large scale applications)
+=> Redux not part of react, its a seperate library which has to be installed by npm
+=> its not the only library for state management(enzyme, etc)
+=>alternative is Zustand which is gaining popularity 
+=> Redux offers easy debugging of application
+=>redux dev tools available 
+
+
+React-Redux - bridge between react and redux
+Redux Toolkit - (RTK)
+The Redux Toolkit package is intended to be the standard way to write Redux logic. It was originally created to help address three common concerns about Redux:
+=>"Configuring a Redux store is too complicated"
+=>"I have to add a lot of packages to get Redux to do anything useful"
+=>"Redux requires too much boilerplate code"
+
+Redux store is a big object and stored in a central global place
+Different types slices inside redux container 
+cart slices 
+user slices 
+Initial value
+
+we cannot directly modify the cart
+=>Write data to redux store
+we have to dispatch an action and then it calls a functions and this function(reducer function) modify the cart slice inside redux store
+
+=>Read data from redux store
+we use selector to read data from store and 
+header component(where we want to read the data) is subscribed to the store using a selector
+
+Redux Tool Kit 
+    - Install libraries - @reduxjs/toolkit & react-redux
+    - Build our store
+    - Connect our store to our app
+    - Create our Slice(Cart)
+    - Dispatch(action)
+    - Read the Selector
+
+useSelector hook gives access to the store 
+
+HOME WORKS HERE
+onClick={handleAddItem} - it will not invoke the functon by default
+onClick={()=>handleAddItem(item)} it will not invoke the functon by default
+onClick={handleAddItem(item)} it will invoke the functon by default
+
+
+=>Redux optimization
+const cartItems = useSelector((store)=>store)
+const store = cartItems.cart.items;
+in aboev example, we have subscribed to entire store slice present, which means any updation happens in any of the store slices, will be subscribed to the current component which is less efficient.
+Hence we must always be subscribe to only those slice which is required in the component 
+const cartItems = useSelector((store)=>store.cart.items)
+
+useSelector will select te specific portion of the store slice
+
+2nd mistake 
+while creating a appStore, 
+one single reducer for a whole app 
+reducer is combination of small reducer 
+while writing a slice configuration 
+we use reducers which contains multiple reducer function like (addItem, removeItem, clearCartItem)
+
+
+=>Earlier in vanilla redux, we cannot change the state directly 
+DON"T MUTATE STATE and returning was mandatory, as we had to update the state values like below
+const newState = [...state];
+newState.ite,s.push(action.payload);
+return newState;
+
+=>redux tool kit has the rule to mutate the state and returning is also not mandatory, 
+state.items.push(action.payload);
+
+but actually behind the scenes, redux tool kit is actually not mutating the state value and uses immer library to do this 
+react tool kit uses immer library behind the scenes
+
+state= ["Akshay"];
+here the state value will not be changes, as we cannot update the state like this, as we are trying to add a reference to this.
+hence if we want to change the state, then we have to mutate the state by  state.items.length = 0
+clearCart: (state, action) => {
+    state=[]; // will change the local state value to blank array but it will nit update the original state value
+}
+
+
+=>React tool kit says - either mutate the state or return the new state
+
+
+=>Redux dev tools chrome extension to debug
+
+
+
+
+

@@ -14,7 +14,7 @@ class About extends Component{
     }
 
     render(){
-        console.log("about class render called", UserContext);
+        //console.log("about class render called", UserContext);
         return (
             <div>
                 <h1> About</h1>

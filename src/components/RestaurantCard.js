@@ -11,8 +11,8 @@ const RestaurantCard = (props) => {
     const {name,cuisines,costForTwo, avgRating, deliveryTime, cloudinaryImageId} = resData;
     
     const {loggedInUser} = useContext(UserContext);
-    console.log("=UserContext",UserContext);
-    console.log("=loggedInUser",loggedInUser);
+    // console.log("=UserContext",UserContext);
+    // console.log("=loggedInUser",loggedInUser);
 
     return (
         <div className="res-card m-4 p-4 w-[250px] rounded-lg bg-gray-100 hover:bg-gray-200">
